@@ -1,0 +1,70 @@
+####################################################################################prod
+#spring:
+#  application:
+#    name: ${NACOS_SERVER_NAME:cp-generator}
+#  cloud:
+#    inetutils:
+#      preferred-networks: ${NACOS_NETWORK_PREFERRED:192:168}
+#    nacos:
+#      discovery:
+#        username: ${NACOS_USER_NAME:nacos}
+#        password: ${NACOS_PASSWORD:nacos}
+#        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+#        namespace: tboc-services-all
+#        group: tboc-apps
+#        metadata:
+#          suffix: "#/"
+#      config:
+#        username: ${NACOS_USER_NAME:nacos}
+#        password: ${NACOS_PASSWORD:nacos}
+#        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+#        file-extension: yaml
+#        namespace: tboc-services-all
+#        prefix: tboc-prod
+#        extension-configs[0]:
+#          data-id: tboc-generator-prod.yaml
+#          group: ${GROUP_NAME:TBOC_GROUP}
+#          refresh: true
+#    loadbalancer:
+#      ribbbon:
+#        enabled: false
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 10000
+#        readTimeout: 600000
+
+
+##################################################################################dev
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+        refresh-enabled: false
+        group: tboc-apps
+        namespace: rncon-services-all
+        server-addr: localhost:8848
+        ip: 192.168.56.1
+        username: jnpt
+        password: JN@Eric101
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: tboc-services-all
+        prefix: tboc-prod
+        extension-configs[0]:
+          data-id: tboc-generator-prod.yaml
+          group: TBOC_GROUP
+          refresh: true
+        enabled: false
+    loadbalancer:
+      ribbbon:
+        enabled: false
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000

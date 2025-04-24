@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - include:
+      file: site/siteLte.sql
+      relativeToChangelogFile: true
+  - include:
+      file: site/siteLteOther.sql
+      relativeToChangelogFile: true
+  - include:
+      file: site/siteNr.sql
+      relativeToChangelogFile: true
+  - include:
+      file: site/siteNrOther.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: neighbor/LteToLte.sql
+      relativeToChangelogFile: true
+  - include:
+      file: neighbor/LteToNr.sql
+      relativeToChangelogFile: true
+  - include:
+      file: neighbor/NrToLte.sql
+      relativeToChangelogFile: true
+  - include:
+      file: neighbor/NrToNr.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: voronoi/siteDistance.sql
+      relativeToChangelogFile: true
+  - include:
+      file: voronoi/voronoiCell.sql
+      relativeToChangelogFile: true
+  - include:
+      file: voronoi/voronoiTier.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: function/newsite_Common.sql
+      relativeToChangelogFile: true
+  - include:
+      file: function/ccb_Common.sql
+      relativeToChangelogFile: true
+  - include:
+      file: function/ccb_4gTo4g.sql
+      relativeToChangelogFile: true
+  - include:
+      file: function/ccb_4gTo5g.sql
+      relativeToChangelogFile: true
+  - include:
+      file: function/ccb_5gTo4g.sql
+      relativeToChangelogFile: true
+  - include:
+      file: function/ccb_5gTo5g.sql
+      relativeToChangelogFile: true

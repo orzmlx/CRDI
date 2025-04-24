@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: pci_service30_voronoi.sql
+      relativeToChangelogFile: true

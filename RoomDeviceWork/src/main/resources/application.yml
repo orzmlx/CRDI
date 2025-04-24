@@ -1,0 +1,186 @@
+###################################################################################prod
+##log file path
+#logging:
+#  file:
+#    name: ${LOGPATH}/my.log
+#  level:
+#    com:
+#      ericsson: DEBUG
+#
+##tomcat
+#server:
+#  compression:
+#    enabled: true
+#    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+#    min-response-size: 2048
+#  port: ${SERVICE_PORT}
+#  tomcat:
+#    threads:
+#      max: 1000
+#    basedir: ./tmp/
+#  servlet:
+#    session:
+#      timeout: 120m
+#
+#spring:
+#  application:
+#    name: ${nacos_service_name:cp-generator}
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 10MB
+#      max-request-size: 100MB
+#
+#  datasource:
+#    generator:
+#      hikari:
+#        driver-class-name: org.mariadb.jdbc.Driver
+#        jdbc-url: jdbc:mariadb://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?allowLoadLocalInfile=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#        username: ${MYSQL_USER}
+#        password: ${MYSQL_PASSWORD}
+#        minimum-idle: 5
+#        maximum-pool-size: 50
+#        auto-commit: true
+#        idle-timeout: 30000
+#        pool-name: HikariPool-1
+#        max-lifetime: 1800000
+#        connection-timeout: 30000
+#        connection-test-query: SELECT 1
+#    commoncore:
+#      hikari:
+#        driver-class-name: org.mariadb.jdbc.Driver
+#        jdbc-url: jdbc:mariadb://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE_COMMONCORE}?allowLoadLocalInfile=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#        username: ${MYSQL_USER_COMMONCORE}
+#        password: ${MYSQL_PASSWORD_COMMONCORE}
+#        minimum-idle: 5
+#        maximum-pool-size: 50
+#        auto-commit: true
+#        idle-timeout: 30000
+#        pool-name: HikariPool-2
+#        max-lifetime: 1800000
+#        connection-timeout: 30000
+#        connection-test-query: SELECT 1
+#    apcp:
+#      hikari:
+#        driver-class-name: org.mariadb.jdbc.Driver
+#        jdbc-url: jdbc:mariadb://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE_APCP}?allowLoadLocalInfile=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#        username: ${MYSQL_USER_APCP}
+#        password: ${MYSQL_PASSWORD_APCP}
+#        minimum-idle: 5
+#        maximum-pool-size: 50
+#        auto-commit: true
+#        idle-timeout: 30000
+#        pool-name: HikariPool-3
+#        max-lifetime: 1800000
+#        connection-timeout: 30000
+#        connection-test-query: SELECT 1
+#
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#
+#  quartz:
+#    scheduler-name: generatorSchedule
+#    job-store-type: memory
+#    auto-startup: true
+#    startup-delay: 1s
+#    wait-for-jobs-to-complete-on-shutdown: true
+#    overwrite-existing-jobs: false
+#    properties:
+#      org:
+#        quartz:
+#          threadPool:
+#            threadCount: 25
+#            threadPriority: 5
+#            class: org.quartz.simpl.SimpleThreadPool
+#  liquibase:
+#    enabled: true
+#
+#config:
+#  operator: ${OPERATOR}
+#  batchSize: 100000
+#  dir: ${TEMPPATH}
+#  useLteOtherForgenerator: true
+#  useNrOtherForgenerator: true
+#  otherSiteDistance: 6000
+#  createShapeFlag: false
+#  citySelectFlag: true
+
+
+
+
+####################################################################################dev
+#log file path
+logging:
+  file:
+    name: ./my.log
+  level:
+    com:
+      ericsson: DEBUG
+
+#tomcat
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 2048
+  port: 38901
+  tomcat:
+    threads:
+      max: 1000
+    basedir: ./tmp/
+  servlet:
+    session:
+      timeout: 120m
+    context-path: /
+
+spring:
+  application:
+    name: ${nacos_service_name:room-device}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+  datasource:
+    room:
+      hikari:
+        driver-class-name: org.mariadb.jdbc.Driver
+        jdbc-url: jdbc:mariadb://rm-bp1062md2vr7cv788yo.mysql.rds.aliyuncs.com:3306/room_device_dev?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: Ericsson@123
+        minimum-idle: 5
+        maximum-pool-size: 50
+        auto-commit: true
+        idle-timeout: 30000
+        pool-name: HikariPool-1
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+#    commoncore:
+#      hikari:
+#        driver-class-name: org.mariadb.jdbc.Driver
+#        jdbc-url: jdbc:mariadb://rm-bp1062md2vr7cv788yo.mysql.rds.aliyuncs.com:3306/commoncore?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#        username: root
+#        password: Ericsson@123
+#        minimum-idle: 5
+#        maximum-pool-size: 50
+#        auto-commit: true
+#        idle-timeout: 30000
+#        pool-name: HikariPool-2
+#        max-lifetime: 1800000
+#        connection-timeout: 30000
+#        connection-test-query: SELECT 1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+# 图片/视频存放网址配置
+images:
+  save:
+    url: /opt/ericsson/room/img
+  http:
+    url: http://serein20.a1.luyouxia.net:26254/room/images
+
+
