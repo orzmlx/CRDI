@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/room_device-master.iml" filepath="$PROJECT_DIR$/.idea/room_device-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CRED​.iml" filepath="$PROJECT_DIR$/.idea/CRED​.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RoomDeviceWork/Computer_Room_Equipment_Det.iml" filepath="$PROJECT_DIR$/RoomDeviceWork/Computer_Room_Equipment_Det.iml" />
     </modules>
   </component>
 </project>

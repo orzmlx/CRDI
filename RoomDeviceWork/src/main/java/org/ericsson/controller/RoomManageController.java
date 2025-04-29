@@ -22,7 +22,6 @@ public class RoomManageController {
     @ApiOperation(value = "查询机房列表", httpMethod="POST")
     public ResultRest queryRoom() {
         //入参的参数校验
-
         ResultRest output = null;
         try{
             output = ResultRest.ok(RoomService.list());

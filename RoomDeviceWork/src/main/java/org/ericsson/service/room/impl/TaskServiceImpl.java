@@ -8,4 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements ITaskService {
+
+
+    @Override
+    public void saveTask(Task task) throws Exception {
+
+    }
 }

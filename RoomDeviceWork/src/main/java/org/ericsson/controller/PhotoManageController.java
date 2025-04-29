@@ -7,6 +7,7 @@ import org.ericsson.controller.request.PhotoBody;
 import org.ericsson.service.room.IPhotoVideoService;
 import org.ericsson.util.ResultRest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PhotoManageController {
     @Autowired
     private IPhotoVideoService PhotoVideoService;
-
     @PostMapping("/uploadPhoto")
     @ApiOperation(value = "上传照片/视频", httpMethod="POST")
     public ResultRest uploadPhoto(PhotoBody photoBody) {
         //入参的参数校验
-        if(photoBody.getPhotoFileList().size()<=0 && photoBody.getVideoFileList().size() <= 0){ return ResultRest.fail("【照片文件和视频文件】不能同时为空"); }
-
+        if(photoBody.getPhotoFileList().size() <= 0 && photoBody.getVideoFileList().size() <= 0){ return ResultRest.fail("【照片文件和视频文件】不能同时为空"); }
         ResultRest output = null;
         try{
             PhotoVideoService.uploadPhoto(photoBody);
@@ -36,9 +35,8 @@ public class PhotoManageController {
         //响应结果
         return output;
     }
-
-    @PostMapping("/queryPhoto")
-    @ApiOperation(value = "查询照片/视频列表", httpMethod="POST")
+    @GetMapping("/queryPhoto")
+    @ApiOperation(value = "查询照片/视频列表", httpMethod="GET")
     public ResultRest queryPhoto(PhotoBody photoBody) {
         //入参的参数校验
 

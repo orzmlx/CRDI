@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.ericsson.protobuf";
+option java_outer_classname = "DetectionModel";
+
+message Detection {
+    uint32 class_id = 1;    // 类别ID
+    float confidence = 2;   // 置信度
+    float x_center = 3;    // 中心点X坐标
+    float y_center = 4;    // 中心点Y坐标
+    float width = 5;       // 宽度
+    float height = 6;      // 高度
+}
+
+message ImageDetections {
+    repeated Detection detections = 1;  // 多个检测框
+}

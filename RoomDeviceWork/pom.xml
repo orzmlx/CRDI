@@ -27,28 +27,35 @@
 	</properties>
 
 	<repositories>
+		<!-- Maven 依赖 -->
 		<repository>
-			<id>maven2-repository.dev.java.net</id>
-			<name>Java.net repository</name>
-			<url>http://download.java.net/maven/2</url>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<url>https://repo.maven.apache.org/maven2</url>
 		</repository>
-		<repository>
-			<id>osgeo</id>
-			<name>OSGeo Release Repository</name>
-			<url>https://repo.osgeo.org/repository/release/</url>
-			<snapshots><enabled>false</enabled></snapshots>
-			<releases><enabled>true</enabled></releases>
-		</repository>
-		<repository>
-			<id>osgeo-snapshot</id>
-			<name>OSGeo Snapshot Repository</name>
-			<url>https://repo.osgeo.org/repository/snapshot/</url>
-			<snapshots><enabled>true</enabled></snapshots>
-			<releases><enabled>false</enabled></releases>
-		</repository>
+<!--		<repository>-->
+<!--			<id>maven2-repository.dev.java.net</id>-->
+<!--			<name>Java.net repository</name>-->
+<!--			<url>http://download.java.net/maven/2</url>-->
+<!--		</repository>-->
+<!--		<repository>-->
+<!--			<id>osgeo</id>-->
+<!--			<name>OSGeo Release Repository</name>-->
+<!--			<url>https://repo.osgeo.org/repository/release/</url>-->
+<!--			<snapshots><enabled>false</enabled></snapshots>-->
+<!--			<releases><enabled>true</enabled></releases>-->
+<!--		</repository>-->
+<!--		<repository>-->
+<!--			<id>osgeo-snapshot</id>-->
+<!--			<name>OSGeo Snapshot Repository</name>-->
+<!--			<url>https://repo.osgeo.org/repository/snapshot/</url>-->
+<!--			<snapshots><enabled>true</enabled></snapshots>-->
+<!--			<releases><enabled>false</enabled></releases>-->
+<!--		</repository>-->
 	</repositories>
 	<dependencyManagement>
 		<dependencies>
+
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -72,6 +79,17 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<!-- pom.xml -->
+		<dependency>
+			<groupId>org.openpnp</groupId>
+			<artifactId>opencv</artifactId>
+			<version>4.7.0-0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.onnxruntime</groupId>
+			<artifactId>onnxruntime</artifactId>
+			<version>1.15.1</version> <!-- 使用最新稳定版本 -->
+		</dependency>
 		<!-- ssh -->
 		<dependency>
 			<groupId>com.jcraft</groupId>
@@ -225,11 +243,55 @@
 			<artifactId>dom4j</artifactId>
 			<version>2.1.4</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.21.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.luben</groupId>
+			<artifactId>zstd-jni</artifactId>
+			<version>1.5.5-5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>room-1.0.0</finalName>
 		<plugins>
+			<!-- 添加 os-maven-plugin 用于自动检测操作系统 -->
+			<plugin>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>1.7.1</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>detect</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Protobuf 插件 -->
+			<plugin>
+				<groupId>org.xolstice.maven.plugins</groupId>
+				<artifactId>protobuf-maven-plugin</artifactId>
+				<version>0.6.1</version>
+				<configuration>
+					<protocArtifact>com.google.protobuf:protoc:3.21.12:exe:${os.detected.classifier}</protocArtifact>
+					<protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+					<outputDirectory>${project.build.directory}/generated-sources/protobuf</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

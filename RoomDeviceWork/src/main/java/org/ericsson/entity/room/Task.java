@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.Blob;
 import java.util.Date;
 
 @Data
@@ -19,7 +20,7 @@ import java.util.Date;
 @Builder
 public class Task {
     @TableId(value = "task_id", type = IdType.AUTO)
-    private Integer taskId;
+    private String  taskId;
     @TableField(value = "task_name")
     private String taskName;
     @TableField(value = "task_status")
@@ -29,4 +30,6 @@ public class Task {
     private Date createTime;
     @TableField(value = "task_remark")
     private String task_remark;
+    @TableField(value = "task_det_result")
+    private byte[] taskDetResult; // 任务检测结果
 }
