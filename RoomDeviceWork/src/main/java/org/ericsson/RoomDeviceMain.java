@@ -29,7 +29,6 @@ import java.util.TimeZone;
 @EnableFeignClients
 @SpringBootApplication
 public class RoomDeviceMain {
-
     //设置时区 相差8小时
     @PostConstruct
     void started() {

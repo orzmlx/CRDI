@@ -60,7 +60,13 @@ public class PhotoVideoServiceImpl extends ServiceImpl<PhotoVideoMapper, PhotoVi
     @Override
     @Transactional
     public void uploadPhoto(PhotoBody body) throws Exception{
+
+        //1. 首先储存本次的图片和视频识别任务，返回taskId
         Date currentDate = new Date();
+        String taskId = TaskService.saveTask(body);
+        if (taskId == null) {
+            throw new Exception("任务保存失败");
+        }
         //获取图片列表、视频列表
         List<MultipartFile> photoFileList = body.getPhotoFileList();
         List<MultipartFile> videoFileList = body.getVideoFileList();

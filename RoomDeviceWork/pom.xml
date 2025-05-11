@@ -24,6 +24,7 @@
 		<knife4j.version>3.0.3</knife4j.version>
 		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
 		<geotools.version>15.1</geotools.version>
+		<os.detected.classifier>osx-x86_64</os.detected.classifier>
 	</properties>
 
 	<repositories>
@@ -246,7 +247,7 @@
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
-			<version>3.21.12</version>
+			<version>3.25.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.luben</groupId>
@@ -262,7 +263,7 @@
 			<plugin>
 				<groupId>kr.motd.maven</groupId>
 				<artifactId>os-maven-plugin</artifactId>
-				<version>1.7.1</version>
+				<version>1.7.0</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -279,7 +280,7 @@
 				<artifactId>protobuf-maven-plugin</artifactId>
 				<version>0.6.1</version>
 				<configuration>
-					<protocArtifact>com.google.protobuf:protoc:3.21.12:exe:${os.detected.classifier}</protocArtifact>
+					<protocArtifact>com.google.protobuf:protoc:3.25.6:exe:${os.detected.classifier}</protocArtifact>
 					<protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
 					<outputDirectory>${project.build.directory}/generated-sources/protobuf</outputDirectory>
 				</configuration>

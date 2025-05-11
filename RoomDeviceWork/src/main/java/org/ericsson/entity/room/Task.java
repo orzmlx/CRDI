@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Blob;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -21,13 +21,17 @@ import java.util.Date;
 public class Task {
     @TableId(value = "task_id", type = IdType.AUTO)
     private String  taskId;
+
+    @TableField(value = "room_id")
+    private String roomId;
+
     @TableField(value = "task_name")
     private String taskName;
     @TableField(value = "task_status")
     private String taskStatus;
     @TableField(value = "create_time")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
+    private LocalDateTime createTime;
     @TableField(value = "task_remark")
     private String task_remark;
     @TableField(value = "task_det_result")

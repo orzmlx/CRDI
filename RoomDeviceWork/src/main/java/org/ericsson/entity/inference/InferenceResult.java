@@ -19,6 +19,7 @@ public class InferenceResult {
     private float y;
     private float width;
     private float height;
-    private int classId;
+    private int classId; // 类别id
     private float maxClassProb;
+    private String taskId;
 }

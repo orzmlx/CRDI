@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PhotoBody {
     //机房表的主键ID
-    private Integer roomId;
+    private String roomId;
     //照片文件
     private List<MultipartFile> photoFileList;
     //照片文件

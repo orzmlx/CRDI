@@ -12,6 +12,9 @@ message Detection {
     float height = 6;      // 高度
 }
 
-message ImageDetections {
-    repeated Detection detections = 1;  // 多个检测框
+message TaskDetectResults {
+    string task_id = 1;             // 任务唯一标识（建立索引）
+    repeated Detection results = 2 [packed=true]; // 压缩存储检测结果列表
+    int64 timestamp = 3;            // 时间戳（用于冷热数据分离）
+    reserved 4 to 10;              // 预留扩展字段
 }
